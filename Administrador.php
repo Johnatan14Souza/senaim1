@@ -1,14 +1,22 @@
  <?php 
+ 
 include './includes/global.php';
 include './includes/Estoque.php';
 $title = "Listagem de Filmes";
 include './template/header.php';
-listar2();
-
-
 
 ?>
+<?php 
 
+excluir();
+
+if(isset($_SESSION['usuario'])){
+    header("location:Listagem.php");
+}
+if(empty($_SESSION)){
+      header("location:Session.php"); 
+}
+?>
 <style> .c{
              text-decoration: none;
              border: 9px;
@@ -22,11 +30,13 @@ listar2();
 <div class="center">
     <table style="width: 100%">
         <tr style="background: #CCC; ">
+<th>Excluir</th>
+<th>Editar</th>
 <th>Id</th>
 <th>Nome</th>
 <th>Numero do episodio</th>
-<th>Temporada</th>
 <th>Horario</th>
+<th>Temporada</th>
 <th>3D</th>
 <th>Classificacao de Idade</th>
 
@@ -35,14 +45,12 @@ listar2();
             
 <?php
 
+listar();
+editar();
+editar2();
+
 include './template/footer.php';
-include './Incluir.php';
+
 
 ?></tr> 
             </table>  
-    
- <h2<?php  
-    
-     echo "Bem Vindo ". $_COOKIE["nome"]; 
-
-     ?>></h2>
